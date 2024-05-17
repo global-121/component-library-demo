@@ -16,4 +16,9 @@ export default [
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   eslintPluginPrettierRecommended,
+  {
+    rules: {
+      "@typescript-eslint/no-extraneous-class": "off",
+    },
+  },
 ];
