@@ -1,0 +1,11 @@
+@use "../../theme.scss" as theme;
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  // XXX: I have to manually set the colour here,
+  // material theme does not support using extra colours
+  background-color: theme.$color-navy;
+}
