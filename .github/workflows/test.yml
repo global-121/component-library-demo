@@ -1,0 +1,24 @@
+name: "CI Checks"
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: "npm install --no-fund --no-audit"
+      - name: Lint files
+        run: npm run lint
+      - name: Run tests
+        run: npm run test:ci
