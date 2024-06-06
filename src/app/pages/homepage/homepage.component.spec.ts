@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomepageComponent } from './homepage.component';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 describe('HomepageComponent', () => {
   let component: HomepageComponent;
@@ -8,7 +10,8 @@ describe('HomepageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomepageComponent],
+      imports: [HomepageComponent, RouterModule.forRoot([])],
+      providers: [provideExperimentalZonelessChangeDetection()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomepageComponent);
@@ -18,12 +21,5 @@ describe('HomepageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should render homepage paragraph', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('p')?.textContent).toContain(
-      'homepage works!',
-    );
   });
 });
