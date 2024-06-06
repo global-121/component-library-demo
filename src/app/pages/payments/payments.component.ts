@@ -1,24 +1,22 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-
+import { Message } from 'primeng/api';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { MenuModule } from 'primeng/menu';
 import { DialogModule } from 'primeng/dialog';
 import { CardModule } from 'primeng/card';
 import { TooltipModule } from 'primeng/tooltip';
 import { TagModule } from 'primeng/tag';
 import { SplitButtonModule } from 'primeng/splitbutton';
-import { ToastModule } from 'primeng/toast';
 import { PaginatorModule } from 'primeng/paginator';
 
 import { ProgramHeaderComponent } from '../../components/program-header/program-header.component';
-import { MessageService } from 'primeng/api';
+import { ToastService } from '../../services/toast.service';
 
 interface Payment {
   creationDate: Date;
@@ -41,29 +39,23 @@ interface Payment {
     InputTextModule,
     DropdownModule,
     ProgramHeaderComponent,
-    OverlayPanelModule,
     MenuModule,
     DialogModule,
     CardModule,
     TooltipModule,
     TagModule,
     SplitButtonModule,
-    ToastModule,
     PaginatorModule,
   ],
-  providers: [MessageService],
+  providers: [ToastService],
   templateUrl: './payments.component.html',
-  styleUrl: './payments.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentsComponent {
-  private messageService = inject(MessageService);
-  showToast({ message, severity }: { severity?: string; message?: string }) {
-    this.messageService.add({
-      severity: severity ?? 'success',
-      summary: severity === 'error' ? 'Error' : 'Success',
-      detail: message ?? 'Something happened!',
-    });
+  private toastService = inject(ToastService);
+
+  showToast(message: Message) {
+    this.toastService.showToast(message);
   }
 
   modalVisible = false;
@@ -104,13 +96,17 @@ export class PaymentsComponent {
     {
       label: 'Unused Vouchers',
       command: () => {
-        this.showToast({ message: 'You clicked on Unused Vouchers!' });
+        this.showToast({
+          detail: 'You clicked on Unused Vouchers!',
+        });
       },
     },
     {
       label: 'Debit Card Usage',
       command: () => {
-        this.showToast({ message: 'You clicked on Debit Card Usage!' });
+        this.showToast({
+          detail: 'You clicked on Debit Card Usage!',
+        });
       },
     },
   ];
@@ -119,7 +115,9 @@ export class PaymentsComponent {
     {
       label: 'Create custom payment',
       command: () => {
-        this.showToast({ message: 'You clicked on Create custom payment!' });
+        this.showToast({
+          detail: 'You clicked on Create custom payment!',
+        });
       },
     },
   ];

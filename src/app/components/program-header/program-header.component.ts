@@ -6,20 +6,21 @@ import { TabMenuModule } from 'primeng/tabmenu';
   standalone: true,
   imports: [TabMenuModule],
   templateUrl: './program-header.component.html',
-  styleUrl: './program-header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgramHeaderComponent {
   navMenuItems = [
     {
       label: 'Overview | Participants',
+      routerLink: '/participants',
     },
     {
       label: 'Payments',
-      routerLink: '/', // Just throwing this in there to make one selected by default
+      routerLink: '/payments',
     },
     {
       label: 'Monitoring',
+      routerLink: '/monitoring',
     },
   ];
 }

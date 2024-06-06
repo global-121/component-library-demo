@@ -1,0 +1,100 @@
+<p-table
+  [value]="peopleAffected()"
+  [lazy]="true"
+  (onLazyLoad)="onFilterChange.emit($event)"
+  dataKey="id"
+  [paginator]="true"
+  [rows]="10"
+  [totalRecords]="totalRecords()"
+  [loading]="loading()"
+  [globalFilterFields]="globalFilterFields()"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10, 20, 100]"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      @for (column of columns(); track $index) {
+        <th [pSortableColumn]="column.field">
+          {{ column.header }} <p-sortIcon [field]="column.field" />
+        </th>
+      }
+      <!-- Extra column for the gear icon -->
+      <th></th>
+    </tr>
+    <tr>
+      @for (column of columns(); track $index) {
+        <th>
+          @switch (column.type) {
+            @case ("text") {
+              <p-columnFilter type="text" [field]="column.field" />
+            }
+            @case ("enum") {
+              <p-columnFilter
+                [field]="column.field"
+                matchMode="in"
+                [showMenu]="false"
+              >
+                <ng-template
+                  pTemplate="filter"
+                  let-value
+                  let-filter="filterCallback"
+                >
+                  <p-multiSelect
+                    appendTo="body"
+                    [options]="column.options"
+                    placeholder="Any"
+                    (onChange)="filter($event.value)"
+                    optionLabel="label"
+                    optionValue="value"
+                    [maxSelectedLabels]="1"
+                    [selectedItemsLabel]="'{0} items'"
+                  >
+                    <ng-template let-option pTemplate="item">
+                      <div class="vertical-align-middle inline-block">
+                        <span class="ml-1 mt-1">{{ option.label }}</span>
+                      </div>
+                    </ng-template>
+                  </p-multiSelect>
+                </ng-template>
+              </p-columnFilter>
+            }
+          }
+        </th>
+      }
+      <!-- Extra column for the gear icon -->
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-personAffected>
+    <tr [pContextMenuRow]="personAffected">
+      @for (column of columns(); track $index) {
+        <td>
+          @switch (column.format) {
+            @case ("chip") {
+              <p-chip [label]="getCellValue(personAffected, column.field)" />
+            }
+            @case ("currency") {
+              {{ getCellValue(personAffected, column.field) | currency }}
+            }
+            @default {
+              {{ getCellValue(personAffected, column.field) }}
+            }
+          }
+        </td>
+      }
+      <td style="text-align: center">
+        <p-button
+          text
+          plain
+          icon="pi pi-ellipsis-v"
+          (click)="
+            personAffectedForExtraOptions = personAffected;
+            extraOptionsMenu.toggle($event)
+          "
+        />
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-menu [model]="contextMenuItems" #extraOptionsMenu popup appendTo="body" />

@@ -1,6 +1,6 @@
 <app-program-header />
 <div class="w-full">
-  <div class="container mx-auto py-4">
+  <div class="container py-4">
     <div class="flex items-stretch">
       <p-selectButton
         [options]="paymentStatuses"
@@ -11,7 +11,7 @@
 
       <div class="ml-auto flex gap-2">
         <p-button
-          (click)="downloadPanel.toggle($event)"
+          (click)="downloadOptionsMenu.toggle($event)"
           label="Download"
           icon="pi pi-chevron-down"
           iconPos="right"
@@ -19,9 +19,7 @@
           severity="secondary"
           outlined
         />
-        <p-overlayPanel #downloadPanel styleClass="[&>*]:p-0">
-          <p-menu [model]="downloadOptions" />
-        </p-overlayPanel>
+        <p-menu [model]="downloadOptions" #downloadOptionsMenu popup />
 
         <p-splitButton
           rounded
@@ -213,7 +211,11 @@
       <p-paginator
         class="mx-auto"
         (onPageChange)="
-          showToast({ message: 'Page changed', severity: 'info' })
+          showToast({
+            summary: 'Page Change',
+            detail: 'Check the payment details for working pagination',
+            severity: 'info',
+          })
         "
         [first]="0"
         [rows]="10"
@@ -223,4 +225,3 @@
     </div>
   </div>
 </div>
-<p-toast />

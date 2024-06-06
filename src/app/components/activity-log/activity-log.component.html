@@ -1,0 +1,17 @@
+<p-scrollPanel styleClass="h-full w-full">
+  @for (logItem of activityWithIcons(); track $index) {
+    <div class="w-full border-b border-b-grey-300 py-4">
+      <div class="flex w-full gap-2">
+        <i [class]="'grow-0 text-3xl ' + logItem.icon"></i>
+        <div class="mr-auto">
+          <h3 class="text-xl font-bold">{{ logItem.label }}</h3>
+          <p>{{ logItem.date }}</p>
+        </div>
+        <p-chip [label]="logItem.user" />
+      </div>
+      <div class="w-full text-center">
+        <p-button rounded plain text icon="pi pi-chevron-down" />
+      </div>
+    </div>
+  }
+</p-scrollPanel>

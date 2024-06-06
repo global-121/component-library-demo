@@ -8,7 +8,6 @@ import { SidebarModule } from 'primeng/sidebar';
   standalone: true,
   imports: [ButtonModule, ToolbarModule, SidebarModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
