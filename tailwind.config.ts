@@ -6,6 +6,10 @@ export default {
     container: {
       center: true,
     },
+    fontFamily: {
+      display: ['Montserrat', 'sans-serif'],
+      body: ['"Open Sans"', 'sans-serif'],
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',

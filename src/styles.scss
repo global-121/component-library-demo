@@ -1,5 +1,7 @@
 @layer tailwind-base, primeng, tailwind-utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 // Please take note of the order in which these are imported
 @import "tailwindcss/base.css" layer(tailwind-base);
 
@@ -13,4 +15,62 @@
 body {
   @apply bg-grey-100;
   overflow-y: scroll; /* Always show scrollbars to avoid page skipping about */
+}
+
+:root {
+  --font-family: theme("fontFamily.body");
+}
+
+// For now I'm just overriding some defaults here
+// Instead of extending the whole theme
+// Quick and dirty just to get some basic styling
+
+@layer tailwind-base {
+  html {
+    @apply font-body;
+  }
+}
+
+@layer primeng {
+  .p-button,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+    @apply font-bold;
+  }
+
+  h1 {
+    font-size: 20px;
+    line-height: 140%;
+  }
+
+  h2 {
+    font-size: 18px;
+    line-height: 140%;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 140%;
+  }
+
+  .p-card-title {
+    @apply font-display;
+    @apply font-bold;
+    @apply text-black;
+    font-size: 18px;
+    line-height: 140%;
+  }
+
+  .p-button {
+    @apply border-purple bg-purple;
+  }
+
+  .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+    @apply text-purple decoration-red-100;
+  }
 }

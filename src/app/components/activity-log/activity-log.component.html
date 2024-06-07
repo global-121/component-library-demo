@@ -3,9 +3,9 @@
     <div class="w-full border-b border-b-grey-300 py-4">
       <div class="flex w-full gap-2">
         <i [class]="'grow-0 text-3xl ' + logItem.icon"></i>
-        <div class="ltr:mr-auto rtl:ml-auto">
-          <h3 class="text-xl font-bold">{{ logItem.label }}</h3>
-          <p>{{ logItem.date }}</p>
+        <div class="ms-auto">
+          <h3>{{ logItem.label }}</h3>
+          <p class="mt-1 text-xs text-grey-700">{{ logItem.date }}</p>
         </div>
         <p-chip [label]="logItem.user" />
       </div>

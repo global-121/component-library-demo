@@ -149,38 +149,38 @@
           </div>
           <div class="w-full border-t border-grey-100">
             <div class="inline-block w-1/2 py-4">
-              <p class="text-2xl font-bold">{{ payment.participants }}</p>
-              <p>Included participants</p>
+              <h2>{{ payment.participants }}</h2>
+              <p class="text-xs">Included participants</p>
             </div>
             <div class="inline-block w-1/2 border-l border-grey-100 py-4 pl-4">
-              <p class="text-2xl font-bold">{{ payment.totalPaymentAmount }}</p>
-              <p>Total payment amount</p>
+              <h2>{{ payment.totalPaymentAmount }}</h2>
+              <p class="text-xs">Total payment amount</p>
             </div>
           </div>
           <div class="w-full border-b border-t border-grey-100">
             <div class="inline-block w-1/2 py-4">
-              <p class="text-2xl font-bold">
+              <h2>
                 {{
                   payment.successfulTransfers > 0
                     ? payment.successfulTransfers
                     : "-"
                 }}
-              </p>
-              <p>Included participants</p>
+              </h2>
+              <p class="text-xs">Included participants</p>
             </div>
             <div class="inline-block w-1/2 border-l border-grey-100 py-4 pl-4">
-              <p class="text-2xl font-bold">
+              <h2>
                 {{
                   payment.failedTransfers > 0 ? payment.failedTransfers : "-"
                 }}
                 @if (payment.failedTransfers > 0) {
                   <i
-                    class="pi pi-exclamation-triangle text-2xl text-red-500"
+                    class="pi pi-exclamation-triangle text-red-500"
                     pTooltip="Whoopsie Doopsie!"
                   ></i>
                 }
-              </p>
-              <p>Failed Transfers</p>
+              </h2>
+              <p class="text-xs">Failed Transfers</p>
             </div>
           </div>
           <ng-template pTemplate="footer">
