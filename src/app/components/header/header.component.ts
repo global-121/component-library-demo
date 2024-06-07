@@ -12,4 +12,12 @@ import { SidebarModule } from 'primeng/sidebar';
 })
 export class HeaderComponent {
   sidebarVisible = false;
+
+  toggleRTL() {
+    // A bit hacky but it works and it's just for the demo
+    const url = new URL(window.location.href);
+    const isRtl = document.documentElement.dir === 'rtl';
+    url.searchParams.set('rtl', isRtl ? '0' : '1');
+    window.location.href = url.toString();
+  }
 }

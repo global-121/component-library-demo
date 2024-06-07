@@ -1,7 +1,7 @@
 <app-program-header />
 <div class="w-full">
   <div class="container py-4">
-    <div class="flex items-stretch">
+    <div class="flex items-stretch justify-between">
       <p-selectButton
         [options]="paymentStatuses"
         [(ngModel)]="selectedPaymentStatus"
@@ -9,7 +9,7 @@
         optionValue="value"
       />
 
-      <div class="ml-auto flex gap-2">
+      <div class="flex gap-2">
         <p-button
           (click)="downloadOptionsMenu.toggle($event)"
           label="Download"
