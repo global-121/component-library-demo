@@ -1,3 +1,8 @@
-<h1 class="text-navy text-3xl font-bold underline">Hello world!</h1>
-
-<router-outlet />
+<div class="flex min-h-screen flex-col">
+  <app-header />
+  <div class="flex-1">
+    <router-outlet />
+  </div>
+  <app-footer />
+</div>
+<p-toast [key]="toastKey"></p-toast>

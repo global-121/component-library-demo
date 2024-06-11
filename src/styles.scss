@@ -1,4 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer tailwind-base, primeng, tailwind-utilities;
+
+// Please take note of the order in which these are imported
+@import "tailwindcss/base.css" layer(tailwind-base);
+
+@import "primeng/resources/primeng.css";
+@import "primeng/resources/themes/aura-light-blue/theme.css";
+@import "primeicons/primeicons.css";
+
+@import "tailwindcss/components.css" layer(tailwind-utilities);
+@import "tailwindcss/utilities.css" layer(tailwind-utilities);
+
+body {
+  @apply bg-grey-100;
+  overflow-y: scroll; /* Always show scrollbars to avoid page skipping about */
+}

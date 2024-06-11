@@ -1,0 +1,51 @@
+<p-toolbar styleClass="bg-navy border-none rounded-none">
+  <ng-template pTemplate="start">
+    <p-button
+      icon="pi pi-bars"
+      plain
+      rounded
+      text
+      class="[&_button:not(:hover)]:text-white"
+      (click)="sidebarVisible = true"
+    />
+    <h1 class="ml-2 text-xl text-white">
+      <span class="font-bold">121 Portal | </span> Cash for breakfast box
+    </h1>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="flex items-center gap-2">
+      <p-button
+        label="Toggle RTL"
+        link
+        class="[&_button]:text-white"
+        size="small"
+        (click)="toggleRTL()"
+      />
+      <p-button
+        icon="pi pi-search"
+        plain
+        rounded
+        text
+        class="[&_button:not(:hover)]:text-white"
+      />
+      <p-button
+        icon="pi pi-bell"
+        plain
+        rounded
+        text
+        class="[&_button:not(:hover)]:text-white"
+      />
+      <p-button
+        icon="pi pi-user"
+        plain
+        rounded
+        text
+        class="[&_button:not(:hover)]:text-white"
+      />
+    </div>
+  </ng-template>
+</p-toolbar>
+<p-sidebar [(visible)]="sidebarVisible">
+  <h3>Sidebar</h3>
+  <p>Lorem ipsum dolor sit amet...</p>
+</p-sidebar>

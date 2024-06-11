@@ -19,6 +19,6 @@ describe('AppComponent', () => {
   it(`should have the right title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('component-library-demo');
+    expect(app.title).toEqual('121 Portal | Component Library Demo');
   });
 });
